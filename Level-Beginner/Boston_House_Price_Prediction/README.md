@@ -94,7 +94,7 @@ This will: - preprocess data\
 
     models/
        ├── boston_model_best.pkl
-       └── scaler.pkl
+       └── boston_model_scaler.pkl
 
 These allow predictions later **without retraining**.
 
