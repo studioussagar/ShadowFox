@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Next Word Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h1>Live Next Word Predictor</h1>
+
+    <input 
+        type="text" 
+        id="inputBox" 
+        placeholder="Start typing..." 
+        autocomplete="off"
+    >
+
+    <div id="suggestions" class="suggestions"></div>
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
