@@ -143,3 +143,9 @@ This is part of my journey from beginner toward building
 production-ready AI/ML systems.\
 The emphasis is on **clarity, reproducibility, and understanding**, not
 just accuracy.
+
+---
+
+## 👤 Author
+
+**Sagar Sujit Samadder**
