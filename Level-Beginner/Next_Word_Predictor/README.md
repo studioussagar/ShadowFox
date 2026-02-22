@@ -156,3 +156,9 @@ Beam search decoding
 Real-time incremental learning
 
 REST API deployment
+
+---
+
+## 👤 Author
+
+**Sagar Sujit Samadder**
