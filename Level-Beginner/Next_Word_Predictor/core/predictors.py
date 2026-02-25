@@ -2,21 +2,35 @@ import numpy as np
 from collections import Counter
 from .temperature import sample_with_temperature
 
+
+# -------------------------------------------------------
+# Trigram Predictor
+# -------------------------------------------------------
+
 def predict_trigram(sentence, trigram_model, k=3):
     words = sentence.split()
+
     if len(words) < 2:
         return []
 
     key = (words[-2], words[-1])
+
     if key not in trigram_model:
         return []
 
     freq = Counter(trigram_model[key])
-    return [w for w, _ in freq.most_common(k)]
+    predictions = [w for w, _ in freq.most_common(k)]
 
+    return predictions
+
+
+# -------------------------------------------------------
+# LSTM 2-word context Predictor
+# -------------------------------------------------------
 
 def predict_lstm2(sentence, model_2, word_index, index_word, k=3):
     words = sentence.split()
+
     if len(words) < 2:
         return []
 
@@ -30,11 +44,22 @@ def predict_lstm2(sentence, model_2, word_index, index_word, k=3):
 
     top_indices = sample_with_temperature(preds, temperature=0.7, k=k)
 
-    return [index_word.get(i, "") for i in top_indices]
+    results = []
+    for idx in top_indices:
+        word = index_word.get(idx)
+        if word and word not in results:
+            results.append(word)
 
+    return results
+
+
+# -------------------------------------------------------
+# LSTM 3-word context Predictor
+# -------------------------------------------------------
 
 def predict_lstm3(sentence, model_3, word_index, index_word, k=3):
     words = sentence.split()
+
     if len(words) < 3:
         return []
 
@@ -48,4 +73,10 @@ def predict_lstm3(sentence, model_3, word_index, index_word, k=3):
 
     top_indices = sample_with_temperature(preds, temperature=0.7, k=k)
 
-    return [index_word.get(i, "") for i in top_indices]
+    results = []
+    for idx in top_indices:
+        word = index_word.get(idx)
+        if word and word not in results:
+            results.append(word)
+
+    return results

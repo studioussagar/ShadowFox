@@ -1,3 +1,5 @@
+# app.py
+
 from flask import Flask, render_template, request, jsonify
 from core.ultimate import ultimate_predictor
 
@@ -7,14 +9,17 @@ app = Flask(__name__)
 def home():
     return render_template("index.html")
 
+
 @app.route("/predict", methods=["POST"])
 def predict():
+
     data = request.get_json()
     text = data.get("text", "")
 
-    suggestions = ultimate_predictor(text, k=3)
+    result = ultimate_predictor(text, k=3)
 
-    return jsonify({"suggestions": suggestions})
+    return jsonify(result)
+
 
 if __name__ == "__main__":
     app.run(debug=True)
