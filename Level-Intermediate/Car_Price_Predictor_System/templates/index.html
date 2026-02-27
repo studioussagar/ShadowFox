@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Car Resale Price Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h1>Car Resale Price Predictor</h1>
+
+    <form action="/predict" method="post">
+
+        <!-- Showroom Price -->
+        <label>Original Showroom Price (₹)</label>
+        <input type="number" name="present_price"
+               placeholder="Example: 550000"
+               value="{{ form_data.present_price if form_data else '' }}"
+               required>
+        <small>Enter amount in Rupees (e.g., 550000)</small>
+
+        <!-- Kilometers Driven -->
+        <label>Kilometers Driven</label>
+        <input type="number" name="kms_driven"
+               value="{{ form_data.kms_driven if form_data else '' }}"
+               required>
+
+        <!-- Years of Usage -->
+        <label>Years of Usage</label>
+        <input type="number" name="car_age"
+               value="{{ form_data.car_age if form_data else '' }}"
+               required>
+
+        <!-- Owner -->
+        <label>Number of Previous Owners</label>
+        <select name="owner">
+            <option value="0" {% if form_data and form_data.owner == "0" %}selected{% endif %}>First Owner</option>
+            <option value="1" {% if form_data and form_data.owner == "1" %}selected{% endif %}>Second Owner</option>
+            <option value="2" {% if form_data and form_data.owner == "2" %}selected{% endif %}>Third Owner</option>
+            <option value="3" {% if form_data and form_data.owner == "3" %}selected{% endif %}>Fourth Owner or More</option>
+        </select>
+
+        <!-- Fuel Type -->
+        <label>Fuel Type</label>
+        <select name="fuel_type">
+            <option value="Petrol" {% if form_data and form_data.fuel_type == "Petrol" %}selected{% endif %}>Petrol</option>
+            <option value="Diesel" {% if form_data and form_data.fuel_type == "Diesel" %}selected{% endif %}>Diesel</option>
+            <option value="CNG" {% if form_data and form_data.fuel_type == "CNG" %}selected{% endif %}>CNG</option>
+        </select>
+
+        <!-- Seller Type -->
+        <label>Seller Type</label>
+        <select name="seller_type">
+            <option value="Individual" {% if form_data and form_data.seller_type == "Individual" %}selected{% endif %}>Individual Seller</option>
+            <option value="Dealer" {% if form_data and form_data.seller_type == "Dealer" %}selected{% endif %}>Authorized Dealer</option>
+        </select>
+
+        <!-- Transmission -->
+        <label>Transmission Type</label>
+        <select name="transmission">
+            <option value="Manual" {% if form_data and form_data.transmission == "Manual" %}selected{% endif %}>Manual</option>
+            <option value="Automatic" {% if form_data and form_data.transmission == "Automatic" %}selected{% endif %}>Automatic</option>
+        </select>
+
+        <button type="submit">Predict Price</button>
+    </form>
+
+    {% if prediction_text %}
+        <div class="result">
+            <h2>{{ prediction_text }}</h2>
+        </div>
+    {% endif %}
+
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

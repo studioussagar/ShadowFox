@@ -1,0 +1,115 @@
+/* Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Body */
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1f4037, #99f2c8);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Prevent scroll */
+}
+
+/* Container */
+.container {
+    background: #ffffff;
+    width: 95%;
+    max-width: 460px;
+    height: 95vh; /* Force fit inside screen */
+    padding: 20px 22px;
+    border-radius: 14px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Heading */
+h1 {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+    color: #1f4037;
+    margin-bottom: 10px;
+}
+
+/* Form Layout */
+form {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+/* Labels */
+label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #333;
+    margin-top: 6px;
+}
+
+/* Inputs */
+input,
+select {
+    width: 100%;
+    padding: 7px 10px;
+    margin-top: 3px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    font-size: 13px;
+}
+
+/* Focus */
+input:focus,
+select:focus {
+    border-color: #1f4037;
+    outline: none;
+    box-shadow: 0 0 0 1px rgba(31, 64, 55, 0.2);
+}
+
+/* Helper text */
+small {
+    font-size: 11px;
+    color: #777;
+    margin-top: 2px;
+}
+
+/* Button */
+button {
+    margin-top: 10px;
+    padding: 9px;
+    background: #1f4037;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #16342d;
+}
+
+/* Result */
+.result {
+    margin-top: 8px;
+    padding: 10px;
+    text-align: center;
+    border-radius: 8px;
+    background: #e6f7ef;
+    border: 1px solid #b7e4c7;
+}
+
+.result h2 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #0a7d32;
+}
